@@ -13,7 +13,7 @@ RUN set -xe \
 	&& apt-key add archive.key \
 	&& wget -q -O /etc/apt/sources.list.d/jma-receipt-xenial50.list https://ftp.orca.med.or.jp/pub/ubuntu/jma-receipt-xenial50.list \
 	&& apt-get update \
-	&& apt-get dist-upgrade -y
+	&& apt-get dist-upgrade -y \
 ####### 0.2
 	&& apt-get update \
 	&& apt-get install -y jma-receipt \
