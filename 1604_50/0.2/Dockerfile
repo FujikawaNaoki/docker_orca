@@ -5,7 +5,6 @@ MAINTAINER fujikawa <fujikawa.naoki@mac.com>
 # https://www.orca.med.or.jp/receipt/download/xenial/xenial_install_50.html
 
 RUN set -xe \
-    && cd \
 	&& apt-get update \
 	&& apt-get install -y jma-receipt \
     && /bin/echo -e DBENCODING="UTF-8" >> /etc/jma-receipt/db.conf \

@@ -25,5 +25,5 @@ RUN set -xe \
 
 EXPOSE 8000
 
-CMD service postgresql restart && service jma-receipt start && tail -f /dev/null
+ENTRYPOINT service postgresql restart && service jma-receipt start && /bin/bash --login
 
