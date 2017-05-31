@@ -15,3 +15,7 @@ docker run --name orca_1604_50 --restart=always -it -p 8000:8000 fujikawa/jma-re
 docker run --name orca_1604_50 --restart=no -it -p 8000:8000 fujikawa/jma-receipt1604_50:1.0
 docker start orca_1604_5
 docker sotp orca_1604_5
+
+
+#etc
+docker build -t fujikawa/jma-receipt1604_48:1.0 ./1404_48

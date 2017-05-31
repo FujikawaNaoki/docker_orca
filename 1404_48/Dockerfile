@@ -8,7 +8,7 @@ RUN set -xe \
 	&& apt-get -qq -y install wget sudo syslinux-common \
 	&& wget -q https://ftp.orca.med.or.jp/pub/ubuntu/archive.key \
 	&& apt-key add archive.key \
-	&& wget -q -O /etc/apt/sources.list.d/jma-receipt-trusty48.list https://ftp.orca.med.or.jp/pub/ubuntu/jma-receipt-trusty48.list \
+	&& wget -q -O /etc/apt/sources.list.d/jma-receipt-xenial50.list https://ftp.orca.med.or.jp/pub/ubuntu/jma-receipt-xenial50.list \
 	&& apt-get update \
 	&& apt-get dist-upgrade -y \
 	&& apt-get install -y jma-receipt \
@@ -21,9 +21,10 @@ RUN set -xe \
 	&& jma-setup \
 	&& service jma-receipt start \
 	&& /bin/echo -e "password99\npassword99" | sudo -u orca /usr/lib/jma-receipt/bin/passwd_store.sh \
+    && rm -rf /tmp/* \
 	&& rm -rf /var/lib/apt/lists/*
 
+COPY ./start.sh /
+RUN chmod +x /start.sh
 EXPOSE 8000
-
-ENTRYPOINT service postgresql restart && service jma-receipt start && /bin/bash --login
-
+ENTRYPOINT ["/start.sh"]
